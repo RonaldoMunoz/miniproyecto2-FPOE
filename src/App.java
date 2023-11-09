@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
+        /* 
         Menu m1 = new Menu();
         int size = 0;
         Scanner opcionesm1 = new Scanner(System.in);
@@ -173,7 +174,7 @@ public class App {
                     break;
                 case 3:
                     m1.cleanScreen();
-                    /* Mostrar top 3 de ciudades con menos candidatos */
+                    /* Mostrar top 3 de ciudades con menos candidatos 
                     Map<String, Integer> conteoCiudades = new HashMap<>();
                     ArrayList<String> ciudades = new ArrayList<>();
 
@@ -187,14 +188,14 @@ public class App {
                     top3Ciudades.sort((c1, c2) -> conteoCiudades.get(c1).compareTo(conteoCiudades.get(c2)));
                     top3Ciudades = new ArrayList<>(top3Ciudades.subList(0, Math.min(3, top3Ciudades.size())));
 
-                    /* Comprobar si todas las ciudades tienen el mismo número de candidatos */
+                    /* Comprobar si todas las ciudades tienen el mismo número de candidatos 
                     boolean todasCiudadesIguales = top3Ciudades.size() > 0 && conteoCiudades
                             .get(top3Ciudades.get(0)) == conteoCiudades.get(top3Ciudades.get(top3Ciudades.size() - 1));
 
                     if (todasCiudadesIguales) {
                         System.out.println("Las ciudades tienen el mismo numero de candidatos");
                     } else {
-                        /* Imprimir el top 3 de ciudades con menos candidatos */
+                        /* Imprimir el top 3 de ciudades con menos candidatos 
                         System.out.println("\nTop 3 de ciudades con menos candidatos:");
                         for (String ciudad : top3Ciudades) {
                             System.out.println(ciudad + ": " + conteoCiudades.get(ciudad));
@@ -208,5 +209,5 @@ public class App {
                     System.out.println("Ingrese una opción válida");
             }
         } while (opcionMenu3 != 4);
-    }
+    } */}
 }
