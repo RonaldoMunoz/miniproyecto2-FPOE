@@ -17,15 +17,15 @@ public class Menu {
         System.out.println("[F]<- Si desea continuar con el ingreso de votos \n");
     }
 
-    public void menu2(Candidato candidato[]) {
+    public void menu2(ArrayList<Candidato> candidato) {
         Scanner dato = new Scanner(System.in);
-        for (int i = 0; i < candidato.length; i++) {
-            if (candidato[i] != null) {
+        for (int i = 0; i < candidato.size(); i++) {
+            if (candidato.get(i) != null) {
                 System.out.println("Ingrese los votos del candidato: \n");
-                candidato[i].listarDatos();
+                candidato.get(i).listarDatos();
                 System.out.println("N. Votos: \n");
                 int votos = dato.nextInt();
-                candidato[i].setN_votos(votos);
+                candidato.get(i).setN_votos(votos);
             }
         }
     }
@@ -85,14 +85,13 @@ public class Menu {
 
     }
 
-    public void insertCandidato(Candidato[] candidato) {
-        /* Creamos el array de objetos */
+    public void insertCandidato(ArrayList<Candidato> candidato) {
         String request = " ";
         Partido_p p1 = null;
         C_origen c1 = null;
         Inclinacion inclinacion = null;
         Scanner dato = new Scanner(System.in);
-        for (int i = 0; i < candidato.length; i++) { /* Iniciamos el for para ir creando los objetos nuevos */
+        while (true) { 
             System.out.println("Ingrese el nombre del candidato:");
             String nombre = dato.nextLine();
             nombre = capitalizeString(nombre);
@@ -135,21 +134,25 @@ public class Menu {
                     System.out.println("Digite una opcion valida");
                 }
             } while (true);
-            candidato[i] = new Candidato(nombre, identificacion, c1, p1, promesas, inclinacion, 0);
-
+            candidato.add(new Candidato(nombre, identificacion, c1, p1, promesas, inclinacion, 0));
+            System.out.println("Agregamos otro candidato? s/n");
+            request = dato.nextLine();
+            if(request.equals("n")){
+                break;
+            }
         }
     }
 
-    public void actualizarCandidato(Candidato[] candidato) {
+    public void actualizarCandidato(ArrayList<Candidato> candidato) {
         Scanner target = new Scanner(System.in);
         Scanner dato = new Scanner(System.in);
         String inclinacion_p;
         System.out.println("Digite el nombre del candidato que desea actualizar;... \n");
         String buscar = target.nextLine();
-        for (int i = 0; i < candidato.length; i++) {
-            if (candidato[i] != null) {
-                if (candidato[i].getNombre().equals(buscar)) {
-                    System.out.println("Se va actualizar el candidato:" + candidato[i].getNombre());
+        for (int i = 0; i < candidato.size(); i++) {
+            if (candidato.get(i) != null) {
+                if (candidato.get(i).getNombre().equals(buscar)) {
+                    System.out.println("Se va actualizar el candidato:" + candidato.get(i).getNombre());
                     Partido_p p1 = null;
                     C_origen c1 = null;
                     Inclinacion inclinacion = null;
@@ -196,12 +199,12 @@ public class Menu {
                         }
                     } while (true);
 
-                    candidato[i].setNombre(nombre);
-                    candidato[i].setCedula(identificacion);
-                    candidato[i].setC_origen(c1);
-                    candidato[i].setInclinacion(inclinacion);
-                    candidato[i].setPromesas(promesas);
-                    candidato[i].setPartido_politico(p1);
+                    candidato.get(i).setNombre(nombre);
+                    candidato.get(i).setCedula(identificacion);
+                    candidato.get(i).setC_origen(c1);
+                    candidato.get(i).setInclinacion(inclinacion);
+                    candidato.get(i).setPromesas(promesas);
+                    candidato.get(i).setPartido_politico(p1);
                 }
             } else {
                 System.out.println("El usuario no fue encontrado.\n Revisa si escribiste su nombre bien");
@@ -211,16 +214,16 @@ public class Menu {
 
     }
 
-    public void buscarCandidato(Candidato[] candidato) {
+    public void buscarCandidato(ArrayList<Candidato> candidato) {
         Scanner target = new Scanner(System.in);
         System.out.println("Digite el nombre del candidato que desea buscar;... \n");
         String buscar = target.nextLine();
         boolean find = false;
-        for (int i = 0; i < candidato.length; i++) {
-            if (candidato[i] != null) {
-                if (candidato[i].getNombre().equals(buscar)) {
+        for (int i = 0; i < candidato.size(); i++) {
+            if (candidato.get(i) != null) {
+                if (candidato.get(i).getNombre().equals(buscar)) {
                     find = true;
-                    candidato[i].listarDatos();
+                    candidato.get(i).listarDatos();
                 }
             }
         }
@@ -229,16 +232,16 @@ public class Menu {
         }
     }
 
-    public void eliminarCandidato(Candidato[] candidato) {
+    public void eliminarCandidato(ArrayList<Candidato> candidato) {
         Scanner target = new Scanner(System.in);
         System.out.println("Digite el numero de cedula del candidato que desea eliminar;... \n");
         String buscar = target.nextLine();
-        for (int i = 0; i < candidato.length; i++) {
-            if (candidato[i] != null) {
-                if ((candidato[i].getCedula()).equals(buscar)) {
-                    candidato[i].listarDatos();
+        for (int i = 0; i < candidato.size(); i++) {
+            if (candidato.get(i) != null) {
+                if ((candidato.get(i).getCedula()).equals(buscar)) {
+                    candidato.get(i).listarDatos();
                     System.out.println(" Ha sido eliminado con exito \n");
-                    candidato[i] = null;
+                    candidato.remove(i);
                     break;
                 }
                 else{
@@ -249,9 +252,9 @@ public class Menu {
 
     }
 
-    public boolean nullArray(Candidato[] candidato) {
-        for (int i = 0; i < candidato.length; i++) {
-            if (candidato[i] != null) {
+    public boolean nullArray(ArrayList<Candidato> candidato) {
+        for (int i = 0; i < candidato.size(); i++) {
+            if (candidato.get(i) != null) {
                 return false;
                 // Si encontramos un elemento no nulo, salimos del bucle
             }
@@ -259,15 +262,15 @@ public class Menu {
         return true;
     }
 
-    public void votacion(Candidato[] candidato) {
+    public void votacion(ArrayList <Candidato> candidato) {
         Scanner votos = new Scanner(System.in);
         while (true) {
             try {
-                for (int i = 0; i < candidato.length; i++) {
-                    if (candidato[i] != null) {
-                        System.out.println("Ingrese el número de votos para " + candidato[i].getNombre() + ": ");
+                for (int i = 0; i < candidato.size(); i++) {
+                    if (candidato.get(i) != null) {
+                        System.out.println("Ingrese el número de votos para " + candidato.get(i).getNombre() + ": ");
                         int voto = votos.nextInt();
-                        candidato[i].setN_votos(voto);
+                        candidato.get(i).setN_votos(voto);
                     }
                 }
                 break;
@@ -277,4 +280,5 @@ public class Menu {
             }
         }
     }
+
 }

@@ -21,7 +21,7 @@ public class App {
                 sizeA.nextLine(); // Limpiar el búfer de entrada
             }
         }
-        Candidato candidato[] = new Candidato[size];
+        ArrayList <Candidato> candidato = new ArrayList<>();
         Menu1op option1 = null;
         m1.cleanScreen();
         boolean end = false;
@@ -82,9 +82,9 @@ public class App {
                         System.out.println("\tPrimero debes ingresar almenos un candidato");
                         break;
                     } else {
-                        for (int i = 0; i < candidato.length; i++) {
-                            if (candidato[i] != null) {
-                                candidato[i].listarDatos();
+                        for (int i = 0; i < candidato.size(); i++) {
+                            if (candidato.get(i) != null) {
+                                candidato.get(i).listarDatos();
                             }
                         }
                         System.out.println("\tPresiona Enter para continuar...");
@@ -142,10 +142,10 @@ public class App {
                 case 1:
                     m1.cleanScreen();
                     // Mostrar el candidato ganador
-                    Candidato ganador = candidato[0];
-                    for (int i = 1; i < candidato.length; i++) {
-                        if (candidato[i].getN_votos() > ganador.getN_votos()) {
-                            ganador = candidato[i];
+                    Candidato ganador = candidato.get(0);
+                    for (int i = 1; i < candidato.size(); i++) {
+                        if (candidato.get(i).getN_votos() > ganador.getN_votos()) {
+                            ganador = candidato.get(i);
                         }
                     }
                     // Mostrar el candidato ganador
