@@ -1,9 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-
 /**
  *
  * @author usuario
@@ -39,11 +33,8 @@ public class GraficaUser extends javax.swing.JFrame {
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenuAdd = new javax.swing.JMenu();
         jMenuItemAdd = new javax.swing.JMenuItem();
-        jMenuBuscar = new javax.swing.JMenu();
         jMenuItemBuscar = new javax.swing.JMenuItem();
-        jMenuDelete = new javax.swing.JMenu();
         jMenuItemDelete = new javax.swing.JMenuItem();
-        jMenuUpdate = new javax.swing.JMenu();
         jMitemBuscar = new javax.swing.JMenuItem();
         jMenuShow = new javax.swing.JMenu();
         jMitemShow = new javax.swing.JMenuItem();
@@ -72,11 +63,11 @@ public class GraficaUser extends javax.swing.JFrame {
 
         jMenuBar2.setBackground(new java.awt.Color(51, 51, 51));
 
-        jMenuAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("agregar.png"))); // NOI18N
-        jMenuAdd.setText("Agregar");
-
+        jMenuAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("candidato.png"))); // NOI18N
+        jMenuAdd.setText("Candidatos");
 
         jMenuItemAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("agregar.png"))); // NOI18N
+        jMenuItemAdd.setText("Agregar candidato");
         jMenuItemAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemAddActionPerformed(evt);
@@ -84,52 +75,45 @@ public class GraficaUser extends javax.swing.JFrame {
         });
         jMenuAdd.add(jMenuItemAdd);
 
-        jMenuBar2.add(jMenuAdd);
-
-        jMenuBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("buscar.png"))); // NOI18N
-        jMenuBuscar.setText("Buscar");
-
         jMenuItemBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("buscar.png"))); // NOI18N
+        jMenuItemBuscar.setText("Buscar candidato");
         jMenuItemBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemBuscarActionPerformed(evt);
             }
         });
-        jMenuBuscar.add(jMenuItemBuscar);
+        jMenuAdd.add(jMenuItemBuscar);
 
-        jMenuBar2.add(jMenuBuscar);
-
-        jMenuDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("borrar.png"))); // NOI18N
-        jMenuDelete.setText("Eliminar");
-        
         jMenuItemDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("borrar.png"))); // NOI18N
+        jMenuItemDelete.setText("Eliminar candidato");
         jMenuItemDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemDeleteActionPerformed(evt);
             }
         });
-        jMenuDelete.add(jMenuItemDelete);
-
-        jMenuBar2.add(jMenuDelete);
-
-        jMenuUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("actualizado.png"))); // NOI18N
-        jMenuUpdate.setText("Actualizar");
-
+        jMenuAdd.add(jMenuItemDelete);
 
         jMitemBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("actualizado.png"))); // NOI18N
+        jMitemBuscar.setText("Actualizar candidato");
         jMitemBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMitemBuscarActionPerformed(evt);
             }
         });
-        jMenuUpdate.add(jMitemBuscar);
+        jMenuAdd.add(jMitemBuscar);
 
-        jMenuBar2.add(jMenuUpdate);
+        jMenuBar2.add(jMenuAdd);
 
         jMenuShow.setIcon(new javax.swing.ImageIcon(getClass().getResource("ver.png"))); // NOI18N
         jMenuShow.setText("Ver");
+        jMenuShow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuShowActionPerformed(evt);
+            }
+        });
 
         jMitemShow.setIcon(new javax.swing.ImageIcon(getClass().getResource("ver.png"))); // NOI18N
+        jMitemShow.setText("Mostrar candidatos");
         jMitemShow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMitemShowActionPerformed(evt);
@@ -141,9 +125,14 @@ public class GraficaUser extends javax.swing.JFrame {
 
         jMenuContinuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("garrapata.png"))); // NOI18N
         jMenuContinuar.setText("Continuar");
-
+        jMenuContinuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuContinuarActionPerformed(evt);
+            }
+        });
 
         jMitemContinuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("resultado.png"))); // NOI18N
+        jMitemContinuar.setText("Realizar Votacion");
         jMitemContinuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMitemContinuarActionPerformed(evt);
@@ -172,6 +161,30 @@ public class GraficaUser extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jMenuAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAddActionPerformed
+        AddjPanel addCandidato = new AddjPanel();
+        addCandidato.setSize(643,377);
+        addCandidato.setLocation(0,0);
+        content.removeAll();
+        content.add(addCandidato);
+        content.revalidate();
+        content.repaint();
+    }//GEN-LAST:event_jMenuAddActionPerformed
+
+    private void jMenuShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuShowActionPerformed
+        ShowCandidatos show = new ShowCandidatos();
+        show.setSize(643,377);
+        show.setLocation(0,0);
+        content.removeAll();
+        content.add(show);
+        content.revalidate();
+        content.repaint();
+    }//GEN-LAST:event_jMenuShowActionPerformed
+
+    private void jMenuContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuContinuarActionPerformed
+        // Resultados frame parte
+        
+    }//GEN-LAST:event_jMenuContinuarActionPerformed
 
     private void jMenuItemAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAddActionPerformed
         AddjPanel addCandidato = new AddjPanel();
@@ -267,14 +280,11 @@ public class GraficaUser extends javax.swing.JFrame {
     private javax.swing.JPanel content;
     private javax.swing.JMenu jMenuAdd;
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenu jMenuBuscar;
     private javax.swing.JMenu jMenuContinuar;
-    private javax.swing.JMenu jMenuDelete;
     private javax.swing.JMenuItem jMenuItemAdd;
     private javax.swing.JMenuItem jMenuItemBuscar;
     private javax.swing.JMenuItem jMenuItemDelete;
     private javax.swing.JMenu jMenuShow;
-    private javax.swing.JMenu jMenuUpdate;
     private javax.swing.JMenuItem jMitemBuscar;
     private javax.swing.JMenuItem jMitemContinuar;
     private javax.swing.JMenuItem jMitemShow;
