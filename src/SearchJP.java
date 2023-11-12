@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -25,7 +26,7 @@ public class SearchJP extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -94,8 +95,22 @@ public class SearchJP extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextFBuscarActionPerformed
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonBuscarActionPerformed
+    String buscar = jTextFBuscar.getText();
+    boolean find = false;
+    for (int i = 0; i < AddjPanel.candidatos.size(); i++) {
+        if (AddjPanel.candidatos.get(i) != null) {
+            if (AddjPanel.candidatos.get(i).getCedula().equals(buscar)) {
+                find = true;
+               JOptionPane.showMessageDialog(jPanel1,AddjPanel.candidatos.get(i).listarDatos(),"Candidato Encontrado",JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+    }
+    if (!find) {
+        JOptionPane.showMessageDialog(jPanel1,"El usuario No se encontro");
+    }
+
+    
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -104,5 +119,6 @@ public class SearchJP extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField jTextFBuscar;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

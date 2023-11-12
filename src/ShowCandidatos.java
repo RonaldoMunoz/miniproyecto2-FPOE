@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 
+import java.util.ArrayList;
 
 /**
  *
@@ -42,6 +43,15 @@ public class ShowCandidatos extends javax.swing.JPanel {
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
+
+        StringBuilder datos = new StringBuilder();
+        for(int i = 0; i<AddjPanel.candidatos.size();i++){
+            String text = AddjPanel.candidatos.get(i).listarDatos();
+            datos.append(text+"\n");
+            
+        }
+        jTextArea1.setText(datos.toString());
+        
         jShowCandidatos.setViewportView(jTextArea1);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -75,6 +85,8 @@ public class ShowCandidatos extends javax.swing.JPanel {
                         .addComponent(jShowCandidatos, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
+
+
     }// </editor-fold>//GEN-END:initComponents
 
 

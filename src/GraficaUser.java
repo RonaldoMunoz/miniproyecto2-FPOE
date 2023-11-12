@@ -1,14 +1,13 @@
-/**
- *
- * @author usuario
- */
-public class GraficaUser extends javax.swing.JFrame {
+import java.util.ArrayList;
 
+public class GraficaUser extends javax.swing.JFrame {
+    
     /**
      * Creates new form GraficaUser
      */
     public GraficaUser() {
         initComponents();
+        //candidatos = new ArrayList<Candidato>();
         AddjPanel addCandidato = new AddjPanel();
         addCandidato.setSize(643,377);
         addCandidato.setLocation(0,0);
@@ -16,8 +15,6 @@ public class GraficaUser extends javax.swing.JFrame {
         content.add(addCandidato);
         content.revalidate();
         content.repaint();
-        
-        
     }
 
     /**
@@ -83,7 +80,7 @@ public class GraficaUser extends javax.swing.JFrame {
             }
         });
         jMenuAdd.add(jMenuItemBuscar);
-
+        
         jMenuItemDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("borrar.png"))); // NOI18N
         jMenuItemDelete.setText("Eliminar candidato");
         jMenuItemDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -161,15 +158,6 @@ public class GraficaUser extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAddActionPerformed
-        AddjPanel addCandidato = new AddjPanel();
-        addCandidato.setSize(643,377);
-        addCandidato.setLocation(0,0);
-        content.removeAll();
-        content.add(addCandidato);
-        content.revalidate();
-        content.repaint();
-    }//GEN-LAST:event_jMenuAddActionPerformed
 
     private void jMenuShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuShowActionPerformed
         ShowCandidatos show = new ShowCandidatos();
@@ -288,5 +276,7 @@ public class GraficaUser extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMitemBuscar;
     private javax.swing.JMenuItem jMitemContinuar;
     private javax.swing.JMenuItem jMitemShow;
+    //static ArrayList<Candidato> candidatos;
+
     // End of variables declaration//GEN-END:variables
 }

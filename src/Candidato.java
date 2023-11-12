@@ -8,7 +8,7 @@ public class Candidato extends Ciudadano {
     private ArrayList<String> promesas;
     private Inclinacion inclinacion;
     private int n_votos;
-    public int length;
+    
 
     public Candidato(String nombre, String cedula, C_origen c_origen, Partido_p partido_politico,
             ArrayList<String> promesas, Inclinacion inclinacion, int n_votos) {
@@ -59,15 +59,15 @@ public class Candidato extends Ciudadano {
                 getPromesas() + "Inclinación Politica :" + getInclinacion() + getN_votos() + "\n";
     }
 
-    public void listarDatos() {
-        System.out.println(String.format(
+    public String listarDatos() {
+        return String.format(
                 "Nombre: %s\nIdentificacion: %s\nCiudad de origen: %s\nPartido Politico: %s\nPromesas: %s\nInclinación Politica: %s\n",
                 getNombre(),
                 getCedula(),
                 getC_origen().displayNameEnum(),
                 getPartido_politico().displayNameEnum(),
                 getPromesas(),
-                getInclinacion()));
+                getInclinacion());
     }
     public void listarDatosVotos(){
                 System.out.println(String.format(

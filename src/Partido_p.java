@@ -1,8 +1,8 @@
-import java.util.ArrayList;
+
 
 public enum Partido_p {
     LA_FUERZA_DE_LA_PAZ("La Fuerza de la Paz"),
-    MOVIMIENTO_FUERZA_CIUDADANA("Movimiento fuerza ciudadano"),
+    MOVIMIENTO_FUERZA_CIUDADANA("Movimiento fuerza ciudadana"),
     NUEVA_FUERZA_DEMOCRATICA("Nueva fuerza democratica"),
     CREEMOS("Creemos"),
     GENTE_EN_MOVIMIENTO("Gente en movimiento"),
@@ -16,7 +16,7 @@ public enum Partido_p {
     PARTIDO_ALIANZA_SOCIAL_INDEPENDIENTE_ASI("Partido alianza social independiente ASI"),
     MIRA("MIRA"),
     PARTIDO_DE_LA_U("Partido de la U"),
-    PARTIDO_POLO_DEMOCRATICO_ALTERNATIVO("Paritdo polo democratico alternativo"),
+    PARTIDO_POLO_DEMOCRATICO_ALTERNATIVO("partido polo democratico alternativo"),
     PARTIDO_UNION_PATRIOTICA_UP("Partido union patriotica UP")
     ,PARTIDO_CENTRO_DEMOCRATICO("Partido Centro Democratico"),
     MAIS("MAIS");

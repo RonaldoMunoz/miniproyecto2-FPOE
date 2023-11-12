@@ -3,6 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -10,11 +16,20 @@
  */
 public class AddjPanel extends javax.swing.JPanel {
 
+    
     /**
      * Creates new form AddjPanel
      */
     public AddjPanel() {
         initComponents();
+        this.prom = new ArrayList <String>();
+        this.nombre =" ";
+        this.cedula =" ";
+        this.ciudad =" ";
+        this.partido =" ";
+        this.inclinacion =" ";
+        
+
     }
 
     /**
@@ -31,7 +46,8 @@ public class AddjPanel extends javax.swing.JPanel {
         jTextfNombre = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jTextFcedula = new javax.swing.JTextField();
-        jComboBoxCity = new javax.swing.JComboBox<>();
+        //jComboBoxCity = new javax.swing.JComboBox<>();
+        jComboBoxCity = new JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jCheckBoxDerecha = new javax.swing.JCheckBox();
         jCheckBoxIzquierda = new javax.swing.JCheckBox();
@@ -56,13 +72,13 @@ public class AddjPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Cedula:");
 
-        jTextFcedula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFcedulaActionPerformed(evt);
-            }
-        });
 
-        jComboBoxCity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ArrayList<String> listaCiudades = new ArrayList();
+        for (C_origen ciudades : C_origen.values() ) {
+            listaCiudades.add(ciudades.displayNameEnum());
+            
+        }
+        jComboBoxCity.setModel(new javax.swing.DefaultComboBoxModel<>(listaCiudades.toArray(new String[0])));
 
         jLabel3.setText("Ciudad de origen:");
 
@@ -82,15 +98,17 @@ public class AddjPanel extends javax.swing.JPanel {
 
         jLabel4.setText("Ideologia:");
 
-        jComboBoxPartido.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ArrayList<String> listaPartidos = new ArrayList();
+        for (Partido_p partido : Partido_p.values() ) {
+            listaPartidos.add(partido.displayNameEnum());
+            
+        }
+
+        jComboBoxPartido.setModel(new javax.swing.DefaultComboBoxModel<>(listaPartidos.toArray(new String[0])));
 
         jLabel5.setText("Partido Politico:");
 
-        jTextFpromesas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFpromesasActionPerformed(evt);
-            }
-        });
+
 
         jLabel6.setText("Promesas:");
 
@@ -193,26 +211,52 @@ public class AddjPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFcedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFcedulaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFcedulaActionPerformed
+
 
     private void jCheckBoxDerechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxDerechaActionPerformed
-        // TODO add your handling code here:
+        if(jCheckBoxDerecha.isSelected() && jCheckBoxIzquierda.isSelected()){
+            jCheckBoxIzquierda.setSelected(false);
+        }
     }//GEN-LAST:event_jCheckBoxDerechaActionPerformed
 
     private void jCheckBoxIzquierdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxIzquierdaActionPerformed
-        // TODO add your handling code here:
+        if(jCheckBoxDerecha.isSelected() && jCheckBoxIzquierda.isSelected()){
+            jCheckBoxDerecha.setSelected(false);
+        }
     }//GEN-LAST:event_jCheckBoxIzquierdaActionPerformed
 
-    private void jTextFpromesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFpromesasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFpromesasActionPerformed
 
-    private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonAddActionPerformed
-
+    private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {
+        // codeOf: Agregar Candidato y excepcion si no llena todos los campos
+        try{
+        if(jTextfNombre.getText().equals("") == false && jTextFcedula.getText().equals("") == false && (jCheckBoxIzquierda.isSelected()|| jCheckBoxDerecha.isSelected()) && jTextFpromesas.getText().equals("") == false){
+        this.nombre = jTextfNombre.getText();
+        this.cedula = jTextFcedula.getText();
+        this.ciudad = ((String) jComboBoxCity.getSelectedItem()).replace(" ", "_");
+        this.ciudad.replace(" ", "_");
+        this.partido = ((String) jComboBoxPartido.getSelectedItem()).replace(" ", "_");
+        this.ciudad.replace(" ", "_");
+        this.partido.replace(" ", "_");
+        this.prom.add(jTextFpromesas.getText());
+        if(jCheckBoxDerecha.isSelected()){
+            this.inclinacion = "DERECHA";
+        }
+        else if(jCheckBoxIzquierda.isSelected()){
+            this.inclinacion = "IZQUIERDA";
+        }
+        candidatos.add(new Candidato(this.nombre,this.cedula,C_origen.valueOf(this.ciudad.toUpperCase()),Partido_p.valueOf(this.partido.toUpperCase()),this.prom,Inclinacion.valueOf(this.inclinacion),0));
+        initComponents();}
+        else{
+            throw new FormularioException("¡Debes llenar todos los campos del candidato!");
+        }  }
+        catch(FormularioException ex){
+            JOptionPane.showMessageDialog(jPanel1,ex.getMessage()); 
+        }
+        
+        
+        
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAdd;
@@ -230,5 +274,8 @@ public class AddjPanel extends javax.swing.JPanel {
     private javax.swing.JTextField jTextFcedula;
     private javax.swing.JTextField jTextFpromesas;
     private javax.swing.JTextField jTextfNombre;
+    public ArrayList <String> prom;
+    public String nombre,cedula,partido,ciudad,inclinacion;
+    static ArrayList<Candidato> candidatos = new ArrayList<>();
     // End of variables declaration//GEN-END:variables
 }
