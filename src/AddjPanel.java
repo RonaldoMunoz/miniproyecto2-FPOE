@@ -225,6 +225,21 @@ public class AddjPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jCheckBoxIzquierdaActionPerformed
 
+    private void reiniciarVariables(){
+        jTextfNombre.setText(null);
+        jTextFcedula.setText(null);
+        jTextFpromesas.setText(null);
+        this.prom = new ArrayList <String>();
+        this.nombre =" ";
+        this.cedula =" ";
+        this.ciudad =" ";
+        this.partido =" ";
+        this.inclinacion =" ";
+        jCheckBoxDerecha.setSelected(false);
+        jCheckBoxIzquierda.setSelected(false);
+        
+
+    }
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {
         // codeOf: Agregar Candidato y excepcion si no llena todos los campos
@@ -245,7 +260,8 @@ public class AddjPanel extends javax.swing.JPanel {
             this.inclinacion = "IZQUIERDA";
         }
         candidatos.add(new Candidato(this.nombre,this.cedula,C_origen.valueOf(this.ciudad.toUpperCase()),Partido_p.valueOf(this.partido.toUpperCase()),this.prom,Inclinacion.valueOf(this.inclinacion),0));
-        initComponents();}
+        reiniciarVariables();
+        }
         else{
             throw new FormularioException("¡Debes llenar todos los campos del candidato!");
         }  }
