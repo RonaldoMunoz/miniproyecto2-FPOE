@@ -206,7 +206,7 @@ public class GraficaUser extends javax.swing.JFrame {
 
     private void jMitemBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMitemBuscarActionPerformed
         UpdatePanel update = new UpdatePanel();
-        update.setSize(643,377);
+        update.setSize(643, 377);
         update.setLocation(0,0);
         content.removeAll();
         content.add(update);
@@ -225,7 +225,9 @@ public class GraficaUser extends javax.swing.JFrame {
     }//GEN-LAST:event_jMitemShowActionPerformed
 
     private void jMitemContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMitemContinuarActionPerformed
-        // Seguir votacion codigo
+        Resultados resultado = new Resultados();
+        
+        resultado.setVisible(true);
         
     }//GEN-LAST:event_jMitemContinuarActionPerformed
 
@@ -259,7 +261,9 @@ public class GraficaUser extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GraficaUser().setVisible(true);
+                GraficaUser userInterface = new GraficaUser();
+                userInterface.setVisible(true);
+                //new GraficaUser().setVisible(true);
             }
         });
     }

@@ -46,7 +46,6 @@ public class AddjPanel extends javax.swing.JPanel {
         jTextfNombre = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jTextFcedula = new javax.swing.JTextField();
-        //jComboBoxCity = new javax.swing.JComboBox<>();
         jComboBoxCity = new JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jCheckBoxDerecha = new javax.swing.JCheckBox();
@@ -73,7 +72,7 @@ public class AddjPanel extends javax.swing.JPanel {
         jLabel2.setText("Cedula:");
 
 
-        ArrayList<String> listaCiudades = new ArrayList();
+        ArrayList<String> listaCiudades = new ArrayList<String>();
         for (C_origen ciudades : C_origen.values() ) {
             listaCiudades.add(ciudades.displayNameEnum());
             
@@ -98,7 +97,7 @@ public class AddjPanel extends javax.swing.JPanel {
 
         jLabel4.setText("Ideologia:");
 
-        ArrayList<String> listaPartidos = new ArrayList();
+        ArrayList<String> listaPartidos = new ArrayList<String>();
         for (Partido_p partido : Partido_p.values() ) {
             listaPartidos.add(partido.displayNameEnum());
             
@@ -244,6 +243,14 @@ public class AddjPanel extends javax.swing.JPanel {
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {
         // codeOf: Agregar Candidato y excepcion si no llena todos los campos
         try{
+            for(int i = 0; i < AddjPanel.candidatos.size(); i++){
+                if(AddjPanel.candidatos.get(i).getCedula().equals(jTextFcedula.getText())){
+                throw new FormularioException("La cedula que digitaste ya se ha ingresasdo");
+                
+                }
+                
+            }
+
         if(jTextfNombre.getText().equals("") == false && jTextFcedula.getText().equals("") == false && (jCheckBoxIzquierda.isSelected()|| jCheckBoxDerecha.isSelected()) && jTextFpromesas.getText().equals("") == false){
         this.nombre = jTextfNombre.getText();
         this.cedula = jTextFcedula.getText();
