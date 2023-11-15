@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -47,7 +48,7 @@ public class JpaneVotacion extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Votacion");
 
-        jLabelVotosName.setText("Digite la cantidad de votos de: "+ AddjPanel.candidatos.get(index).getNombre());
+        jLabelVotosName.setText("Digite la cantidad de votos de: "+ AddjPanel.candidatos.get(index).getNombre()+ " "+ index);
 
         jTextFVotos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,13 +130,25 @@ public class JpaneVotacion extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextFVotosActionPerformed
 
     private void jButtonVotosAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVotosAddActionPerformed
-        try{ // Tiene que poner un condicional para que index no supere la longitud del array de lo contrario sucede un error.
+        try{ 
+        if (jTextFVotos.getText().equals(null)) {
+            JOptionPane.showMessageDialog(jPanel2,"debes ingresar los votos");
+            return;
+        }      
         int voto = Integer.parseInt(jTextFVotos.getText());
-        // Debe agregar int voto al array de candidatos ejemplo: AddjPanel.candidatos.get(index).setNvotos(voto)
-        index += 1; // Se le aumenta el indice para pasar al siguiente candidato
+        AddjPanel.candidatos.get(index).setN_votos(voto);
+         // Se le aumenta el indice para pasar al siguiente candidato
         jTextFVotos.setText(null);
-        jLabelVotosName.setText("Digite la cantidad de votos de: " + AddjPanel.candidatos.get(index).getNombre());
+        index += 1;
+        if (index<AddjPanel.candidatos.size()) {
+            jLabelVotosName.setText("Digite la cantidad de votos de: " + AddjPanel.candidatos.get(index).getNombre()+":"+index);
+        }
         
+        else {jLabelVotosName.setText("ya haz digitado todos los candidatos");
+                return;}
+        System.out.println(index);
+       
+
         } catch(NumberFormatException ex){
             JOptionPane.showMessageDialog(jPanel2,"Debes agregar un numero");
         }
