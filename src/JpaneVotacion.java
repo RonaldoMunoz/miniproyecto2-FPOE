@@ -146,7 +146,7 @@ public class JpaneVotacion extends javax.swing.JPanel {
         
         else { JOptionPane.showMessageDialog(jPanel2,"Haz ingresado correctamente los votos de los candidatos.");
             Resultados.jPanelContent.removeAll();
-            Ganador ganador = new Ganador();
+            Ganador ganador = new Ganador(AddjPanel.candidatos.toArray(new Candidato[0]));
             ganador.setSize(643, 337);
             Resultados.jPanelContent.add(ganador);
             ganador.setLocation(0,0);
@@ -172,6 +172,6 @@ public class JpaneVotacion extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextFVotos;
     static int index = 0;
-    static boolean end = false;
+    
     // End of variables declaration//GEN-END:variables
 }
