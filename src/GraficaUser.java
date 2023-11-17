@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+
 
 public class GraficaUser extends javax.swing.JFrame {
     
@@ -37,7 +37,8 @@ public class GraficaUser extends javax.swing.JFrame {
         jMitemShow = new javax.swing.JMenuItem();
         jMenuContinuar = new javax.swing.JMenu();
         jMitemContinuar = new javax.swing.JMenuItem();
-
+        
+        
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(115, 125, 188));
         setMinimumSize(new java.awt.Dimension(635, 400));
@@ -58,7 +59,7 @@ public class GraficaUser extends javax.swing.JFrame {
             .addGap(0, 377, Short.MAX_VALUE)
         );
 
-        jMenuBar2.setBackground(new java.awt.Color(51, 51, 51));
+        jMenuBar2.setBackground(new java.awt.Color(255, 255, 255));
 
         jMenuAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("candidato.png"))); // NOI18N
         jMenuAdd.setText("Candidatos");
@@ -158,6 +159,9 @@ public class GraficaUser extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    public void cerrarVentana() {
+        dispose();
+    }
 
     private void jMenuShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuShowActionPerformed
         ShowCandidatos show = new ShowCandidatos();
@@ -225,8 +229,9 @@ public class GraficaUser extends javax.swing.JFrame {
     }//GEN-LAST:event_jMitemShowActionPerformed
 
     private void jMitemContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMitemContinuarActionPerformed
+        userInterface.dispose();
         Resultados resultado = new Resultados();
-        
+        resultado.setLocationRelativeTo(null);
         resultado.setVisible(true);
         
     }//GEN-LAST:event_jMitemContinuarActionPerformed
@@ -261,10 +266,11 @@ public class GraficaUser extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                GraficaUser userInterface = new GraficaUser();
+                
                 userInterface.setVisible(true);
                 //new GraficaUser().setVisible(true);
             }
+
         });
     }
 
@@ -280,7 +286,10 @@ public class GraficaUser extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMitemBuscar;
     private javax.swing.JMenuItem jMitemContinuar;
     private javax.swing.JMenuItem jMitemShow;
+    static boolean exit = false;
+    static GraficaUser userInterface = new GraficaUser();
     //static ArrayList<Candidato> candidatos;
 
     // End of variables declaration//GEN-END:variables
+    
 }

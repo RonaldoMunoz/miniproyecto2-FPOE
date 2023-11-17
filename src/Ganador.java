@@ -126,7 +126,9 @@ public class Ganador extends JPanel {
         jList1.setModel(ciudadesListModel);
 
         Candidato ganador = encontrarGanador(candidatos);
-        jLabelNameWinner.setText("El ganador de las elecciones es: " + ganador.getNombre() + " -- " + ganador.getCedula());
+
+        jLabelNameWinner.setText("El ganador de las elecciones es: " + ganador.getNombre() + "C.C:" + ganador.getCedula());
+
 
         // Mostrar propuestas solo si el ganador tiene propuestas
         if (ganador != null && ganador.getPromesas() != null && !ganador.getPromesas().isEmpty()) {
@@ -139,7 +141,8 @@ public class Ganador extends JPanel {
         Partido_p partidoConMasCandidatos = encontrarPartidoConMasCandidatos(conteoPartidos);
 
         // Mostrar el resultado en el JLabel
-        jLabelPartidos.setText("Partido con más candidatos: " + partidoConMasCandidatos);
+        jLabelPartidos.setText("Partido con más candidatos: " + partidoConMasCandidatos.displayNameEnum());
+
         ganadorActual = ganador;  // Actualizar al ganador actual
     }
 

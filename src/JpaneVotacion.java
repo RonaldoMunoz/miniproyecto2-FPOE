@@ -50,7 +50,9 @@ public class JpaneVotacion extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Votacion");
 
-        jLabelVotosName.setText("Digite la cantidad de votos de: "+ AddjPanel.candidatos.get(index).getNombre() + " "+ index);
+
+        jLabelVotosName.setText("Digite la cantidad de votos de: "+ AddjPanel.candidatos.get(index).getNombre());
+
 
         jTextFVotos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,7 +146,9 @@ public class JpaneVotacion extends javax.swing.JPanel {
 private void jButtonVotosAddActionPerformed(java.awt.event.ActionEvent evt) {
     try {
         if (jTextFVotos.getText().equals(null)) {
-            JOptionPane.showMessageDialog(jPanel2, "Debes ingresar los votos");
+
+            JOptionPane.showMessageDialog(jPanel2,"Debes ingresar los votos de: " + AddjPanel.candidatos.get(index).getNombre());
+
             return;
         }
 
@@ -155,19 +159,26 @@ private void jButtonVotosAddActionPerformed(java.awt.event.ActionEvent evt) {
         jTextFVotos.setText(null);
         index += 1;
 
-        if (index < AddjPanel.candidatos.size()) {
-            jLabelVotosName.setText("Digite la cantidad de votos de: " + AddjPanel.candidatos.get(index).getNombre() + ":" + index);
-        } else {
-            jLabelVotosName.setText("Ya has digitado todos los candidatos");
+        if (index<AddjPanel.candidatos.size()) {
+            jLabelVotosName.setText("Digite la cantidad de votos de: " + AddjPanel.candidatos.get(index).getNombre());
+        }
+        
+        else { JOptionPane.showMessageDialog(jPanel2,"Haz ingresado correctamente los votos de los candidatos.");
+            Resultados.jPanelContent.removeAll();
+            Ganador ganador = new Ganador(AddjPanel.candidatos.toArray(new Candidato[0]));
+            ganador.setSize(643, 337);
+            Resultados.jPanelContent.add(ganador);
+            ganador.setLocation(0,0);
+            Resultados.jPanelContent.revalidate();
+            Resultados.jPanelContent.repaint();
+                return;
+            }
+        
+       
 
-            // Se crea una instancia de Ganador y se agrega al contenedor
-            Ganador ganadorPanel = new Ganador(AddjPanel.candidatos.toArray(new Candidato[0]));
-            JFrame frame = new JFrame("Resultado de Elecciones");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.getContentPane().add(ganadorPanel);
-            frame.pack();
-            frame.setLocationRelativeTo(null);
-            frame.setVisible(true);
+        } catch(NumberFormatException ex){
+            jTextFVotos.setText(null);
+            JOptionPane.showMessageDialog(jPanel2,"Debes agregar un numero");
         }
 
     } catch (NumberFormatException ex) {
@@ -182,5 +193,6 @@ private void jButtonVotosAddActionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextFVotos;
     static int index = 0;
+    
     // End of variables declaration//GEN-END:variables
 }
