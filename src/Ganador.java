@@ -41,13 +41,13 @@ public class Ganador extends JPanel {
         setMinimumSize(new Dimension(643, 337));
         setPreferredSize(new Dimension(643, 337));
 
-        jLabelNameWinner.setFont(new Font("Segoe UI", 2, 14));
+        jLabelNameWinner.setFont(new Font("Segoe UI", 2, 12));
         jLabelNameWinner.setText("El ganador de las elecciones es: ");
 
-        jLabelPartidos.setFont(new Font("Segoe UI", 2, 14));
+        jLabelPartidos.setFont(new Font("Segoe UI", 2, 12));
         jLabelPartidos.setText("Partido con más candidatos: ");
 
-        jLabel2.setFont(new Font("Segoe UI", 2, 14));
+        jLabel2.setFont(new Font("Segoe UI", 2, 12));
         jLabel2.setText("Top 3 ciudades con menos candidatos inscritos:");
 
         jList1.setBackground(new Color(242, 242, 242));
