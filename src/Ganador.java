@@ -127,7 +127,7 @@ public class Ganador extends JPanel {
 
         Candidato ganador = encontrarGanador(candidatos);
 
-        jLabelNameWinner.setText("El ganador de las elecciones es: " + ganador.getNombre() + "C.C:" + ganador.getCedula());
+        jLabelNameWinner.setText("El ganador de las elecciones es: " + ganador.getNombre() + " \n"+"\t C.C:" + ganador.getCedula());
 
 
         // Mostrar propuestas solo si el ganador tiene propuestas

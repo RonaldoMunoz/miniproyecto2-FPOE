@@ -181,9 +181,7 @@ private void jButtonVotosAddActionPerformed(java.awt.event.ActionEvent evt) {
             JOptionPane.showMessageDialog(jPanel2,"Debes agregar un numero");
         }
 
-    } catch (NumberFormatException ex) {
-        JOptionPane.showMessageDialog(jPanel2, "Debes agregar un número");}
-    }// GEN-LAST:event_jButtonVotosAddActionPerformed
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonVotosAdd;
